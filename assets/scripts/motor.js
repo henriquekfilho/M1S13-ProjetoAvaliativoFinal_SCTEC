@@ -45,10 +45,10 @@ export class VagaFrontEnd extends Vaga {   //extends para herdar da classe Vaga 
 
   // Método sobrescrito para calcular compatibilidade considerando a stack específica
   calcularCompatibilidade(candidato) {
-    const resultado = super.calcularCompatibilidade(candidato);
+    const resultado = super.calcularCompatibilidade(candidato);  //super para chamar o método da classe pai
 
     if (candidato.habilidades.includes(this.stack)) {
-      resultado.percentual = Math.min(100, resultado.percentual + 10);
+      resultado.percentual = Math.min(100, resultado.percentual + 10);  //+10% de compatibilidade se o candidato tiver a stack específica
     }
 
     return resultado;
