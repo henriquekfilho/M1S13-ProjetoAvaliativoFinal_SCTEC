@@ -1,12 +1,13 @@
 // ui.js
-import { Vaga, VagaFrontEnd } from "./motor.js";  //importando classes do módulo motor.js
+import { Vaga, VagaFrontEnd } from "./motor.js";
 
-export function renderizarVagas(candidato, vagasJson) { // Função para renderizar vagas na interface do usuário
-  const container = document.getElementById("cardsVagas"); // Seleciona o elemento onde as vagas serão exibidas
+export function renderizarVagas(candidato, vagasJson) {
+  const container = document.getElementById("cardsVagas");
   container.innerHTML = ""; // limpa antes de renderizar
 
-  const vagas = vagasJson.map(v => new VagaFrontEnd(   // Transformar JSON em instâncias de Vaga
-    v.id,  //v. significa que estamos acessando a propriedade do objeto v, que é cada vaga do JSON
+  // Transformar JSON em instâncias de Vaga
+  const vagas = vagasJson.map(v => new VagaFrontEnd(
+    v.id,
     v.empresa,
     v.cargo,
     v.requisitos,
@@ -15,17 +16,19 @@ export function renderizarVagas(candidato, vagasJson) { // Função para renderi
     "JavaScript" // exemplo de stack extra
   ));
 
-  const resultados = vagas.map(vaga => {  // Para cada vaga, calcular compatibilidade com o candidato
-    const resultado = vaga.calcularCompatibilidade(candidato); // Chama o método calcularCompatibilidade da classe Vaga, passando o candidato como argumento
+  // Calcular compatibilidade para cada vaga
+  const resultados = vagas.map(vaga => {
+    const resultado = vaga.calcularCompatibilidade(candidato);
     return { vaga, ...resultado };
   });
 
-  const melhorVaga = resultados.reduce((melhor, atual) => {  //encontrar a vaga com maior compatibilidade usando reduce, que compara cada resultado e mantém o melhor
-    return atual.percentual > melhor.percentual ? atual : melhor; // Se a compatibilidade da vaga atual for maior que a melhor até agora, atualiza a melhor
+  // Encontrar melhor vaga com reduce
+  const melhorVaga = resultados.reduce((melhor, atual) => {
+    return atual.percentual > melhor.percentual ? atual : melhor;
   });
 
   // Renderizar cada card
-  resultados.forEach(r => {  //r representa cada resultado de compatibilidade, que contém a vaga e os detalhes da compatibilidade
+  resultados.forEach(r => {
     const card = document.createElement("div");
     card.classList.add("card");
 
