@@ -30,5 +30,13 @@
     "requisitos": ["HTML", "CSS", "JavaScript", "Bootstrap"],
     "salario": "R$ 3.500",
     "modalidade": "Remoto"
+  },
+    {
+    "id": 5,
+    "empresa": "Consultoria IEL",
+    "cargo": "Front-End Júnior",
+    "requisitos": ["HTML", "JavaScript", "Bootstrap"],
+    "salario": "R$ 4.500",
+    "modalidade": "Presencial - Florianópolis, SC"
   }
 ]
