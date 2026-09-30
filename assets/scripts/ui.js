@@ -27,10 +27,21 @@ export function renderizarVagas(candidato, vagasJson) {
     return atual.percentual > melhor.percentual ? atual : melhor;
   });
 
+  // Destaque da melhor vaga + recomendação
+  const destaque = document.createElement("div");  // cria um elemento div para o destaque
+  destaque.classList.add("melhor-vaga");  // adiciona a classe "melhor-vaga" ao elemento div
+  destaque.innerHTML = `
+    <h2>Melhor vaga encontrada:</h2>
+    <p>${melhorVaga.vaga.empresa} - ${melhorVaga.vaga.cargo}</p>
+    <p>Compatibilidade: ${melhorVaga.percentual}%</p>
+    <p>Recomendação de estudo: Foque em ${melhorVaga.faltantes.join(", ") || "nenhuma habilidade faltante"}.</p>
+  `;
+  container.appendChild(destaque);
+
   // Renderizar cada card
-  resultados.forEach(r => {
-    const card = document.createElement("div");
-    card.classList.add("card");
+  resultados.forEach(r => {  //para cada resultado, cria um card
+    const card = document.createElement("div");  // cria um elemento div para o card
+    card.classList.add("card");  // adiciona a classe "card" ao elemento div
 
     card.innerHTML = `
       <h3>${r.vaga.empresa} - ${r.vaga.cargo}</h3>
@@ -43,15 +54,4 @@ export function renderizarVagas(candidato, vagasJson) {
 
     container.appendChild(card);
   });
-
-  // Destaque da melhor vaga + recomendação
-  const destaque = document.createElement("div");
-  destaque.classList.add("melhor-vaga");
-  destaque.innerHTML = `
-    <h2>Melhor vaga encontrada:</h2>
-    <p>${melhorVaga.vaga.empresa} - ${melhorVaga.vaga.cargo}</p>
-    <p>Compatibilidade: ${melhorVaga.percentual}%</p>
-    <p>Recomendação de estudo: Foque em ${melhorVaga.faltantes.join(", ") || "nenhuma habilidade faltante"}.</p>
-  `;
-  container.appendChild(destaque);
 }
