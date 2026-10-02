@@ -9,7 +9,7 @@ body {
   font-family: "Inter", Arial, sans-serif;
   background-color: #f5f7fa;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.25;
 }
 
 /* Cabeçalho e rodapé */
@@ -84,9 +84,8 @@ form button:hover {
 #cardsVagas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 10px;   /* Espaçamento entre os cards de 1.5 rem ou 24px */
 }
-
 .card {
   background: white;
   border-radius: 10px;
@@ -114,10 +113,11 @@ form button:hover {
 .melhor-vaga {
   grid-column: 1 / -1;
   background: #eafaf1;
-  border: 2px solid #4caf50;
+  border: 2px solid #af4c8c;
   border-radius: 10px;
-  padding: 1.5rem;
+  padding: 0.5rem;
   margin-top: 2rem;
+  line-height: 1.7;
 }
 
 .melhor-vaga h2 {
