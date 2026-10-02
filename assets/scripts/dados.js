@@ -5,7 +5,7 @@ export async function carregarVagas() {  // Função para carregar vagas do arqu
   container.innerHTML = "<p>Carregando vagas...</p>";  //escrever mensagem de carregamento enquanto as vagas estão sendo carregadas
 
   try {
-    const response = await fetch("./assets/data/vagas.json");
+    const response = await fetch("./assets/data/vagas.json");  // Faz a requisição para o arquivo JSON contendo as vagas
 
     if (!response.ok) {   // Se a resposta não for OK, lança erro
       throw new Error("Erro ao carregar vagas");
