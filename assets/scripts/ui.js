@@ -34,7 +34,7 @@ export function renderizarVagas(candidato, vagasJson) {
     <h2>Melhor vaga encontrada:</h2>
     <p>${melhorVaga.vaga.empresa} - ${melhorVaga.vaga.cargo}</p>
     <p>Compatibilidade: ${melhorVaga.percentual}%</p>
-    <p>Recomendação de estudo: Foque em ${melhorVaga.faltantes.join(", ") || "nenhuma habilidade faltante"}.</p>
+    <p>Recomendação de estudo: ${melhorVaga.faltantes.join(", ") || "nenhuma habilidade faltante"}.</p>
   `;
   container.appendChild(destaque);
 
@@ -48,8 +48,6 @@ export function renderizarVagas(candidato, vagasJson) {
       <p>Compatibilidade: ${r.percentual}% (${r.classificacao})</p>
       <p>Habilidades encontradas: ${r.encontradas.join(", ") || "Nenhuma"}</p>
       <p>Habilidades faltantes: ${r.faltantes.join(", ") || "Nenhuma"}</p>
-      <p>Salário: ${r.vaga.salario}</p>
-      <p>Modalidade: ${r.vaga.modalidade}</p>
     `;
 
     container.appendChild(card);
